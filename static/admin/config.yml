@@ -12,6 +12,23 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "projects"
+    label: "projects"
+    folder: "src/pages/projects"
+    create: true
+    fields:
+      - {title: "Title", name: "title", widget: "string"}
+
+  - name: "images"
+    label: "images"
+    folder: "src/pages/images"
+    create: true
+    widget: "list"
+    fields:
+      - {title: "Project", name: "project", widget: "relation", collection: "projects", searchFields: ["title"], displayFields: ["title"], valueField: "title"}
+      - {title: "Title", name: "title", widget: "string"}
+      - {title: "Description", name: "description", widget: "markdown"}
+      - {title: "Image", name: "image", widget: "image"}
   - name: "blog"
     label: "Blog"
     folder: "src/pages/blog"
