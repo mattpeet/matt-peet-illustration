@@ -1,5 +1,6 @@
 ---
 title: New project with images in schema
+templateKey: "project-page"
 seo-keywords: 'project, version, example'
 thumbnail: /img/dog3.jpg
 social-image: /img/dog3.jpg

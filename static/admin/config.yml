@@ -12,6 +12,14 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: 'pages'
+    label: 'Pages'
+    files:
+      - file: 'src/pages/index.md'
+        label: "Home"
+        name: 'index'
+        fields:
+          - {label: 'Header Logo', name: 'headerLogo', widget: 'image'}
   - name: 'projects'
     label: 'projects'
     folder: 'src/pages/projects'
@@ -26,16 +34,16 @@ collections:
         }
       - {
           label: 'SEO Keywords (comma separated)',
-          name: 'seo-keywords',
+          name: 'seoKeywords',
           widget: 'string',
         }
       - { label: 'Home Page Thumbnail', name: 'thumbnail', widget: 'image' }
-      - { label: 'Social Sharing Image', name: 'social-image', widget: 'image' }
+      - { label: 'Social Sharing Image', name: 'socialImage', widget: 'image' }
       - label: 'Images'
         name: 'images'
         widget: 'list'
         fields:
-          - { label: 'Image Title', name: 'image-title', widget: 'string' }
+          - { label: 'Image Title', name: 'imageTitle', widget: 'string' }
           - { label: 'Description', name: 'description', widget: 'markdown' }
-          - { label: Image Alt Text, name: 'alt-text', widget: 'string' }
+          - { label: Image Alt Text, name: 'altText', widget: 'string' }
           - { label: 'Image', name: 'image', widget: 'image' }
