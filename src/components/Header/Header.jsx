@@ -1,14 +1,12 @@
 import React from 'react';
-import { Link } from 'gatsby'
+import { Link } from 'gatsby';
+import headerStyle from './header.module.css';
 
-export default function Header(){
+export default function Header({ logoSrc }) {
   return (
     <header>
       <Link to='/'>
-        <img
-          src='./../src/img/LOGO/MattPeetLOGO-500x116px.png'
-          id='headerImage'
-        />
+        <img className={headerStyle.headerImage} src={logoSrc} alt="Home" />
       </Link>
     </header>
   );

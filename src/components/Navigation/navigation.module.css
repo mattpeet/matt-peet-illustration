@@ -1,0 +1,10 @@
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.largeNavLink {
+  font-size: 1.375rem;
+  margin-bottom: 2rem;
+}
