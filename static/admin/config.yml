@@ -16,10 +16,16 @@ collections:
     label: 'Pages'
     files:
       - file: 'src/pages/index.md'
-        label: "Home"
+        label: 'Home'
         name: 'index'
         fields:
-          - {label: 'Header Logo', name: 'headerLogo', widget: 'image'}
+          - { label: 'Header Logo', name: 'headerLogo', widget: 'image' }
+          - {
+              label: 'Template Key',
+              name: 'templateKey',
+              widget: 'hidden',
+              default: 'index-page',
+            }
   - name: 'projects'
     label: 'projects'
     folder: 'src/pages/projects'
