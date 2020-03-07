@@ -11,6 +11,9 @@ socialLinks:
     faIcon: fab fa-facebook-square
     url: >-
       https://www.facebook.com/pages/category/Artist/Matt-Peet-Illustration-2131152087124697/
+  - description: Email
+    faIcon: fas fa-envelope
+    url: 'mailto:matt@mattpeetillustration.com'
 templateKey: index-page
 ---
 
