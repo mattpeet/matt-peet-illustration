@@ -13,7 +13,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <div className={indexStyle.container}>
-        <Header logoSrc={headerLogo} />
+        <Header logoSrc={headerLogo.publicURL} />
         <Navigation socialLinks={socialLinks} />
         <footer className={indexStyle.footer}>
           <p>&copy; {currentYear} Matt Peet</p>
@@ -29,7 +29,9 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
-        headerLogo
+        headerLogo {
+          publicURL
+        }
         socialLinks {
           description
           faIcon
