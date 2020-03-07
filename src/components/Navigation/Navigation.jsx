@@ -3,34 +3,29 @@ import { Link } from 'gatsby';
 import navigationStyle from './navigation.module.css';
 import globalStyle from '../global.module.css';
 
-const socialLinkData = [
-  {
-    iconClassName: 'fab fa-instagram',
-    description: 'Instagram',
-    url: 'http://instagram.com/m_r_peet'
-  }
-];
+export default function Navigation({ socialLinks }) {
+  const socialListItems = socialLinks.map((x, index) => {
+    const key = `social-link-${index}`;
+    return (
+      <li key={key}>
+        <a href={x.url}>
+          <span className={globalStyle.visuallyHidden}>{x.description}</span>
+          <i className={x.faIcon} />
+        </a>
+      </li>
+    );
+  });
 
-export default function Navigation() {
   return (
     <>
       <nav aria-labelledby='social-nav-label'>
         <span id='social-nav-label' className={globalStyle.visuallyHidden}>
           Social
         </span>
-        <ul className={navigationStyle.navList}>
-          <li>
-            <a href='http://instagram.com/m_r_peet'>
-              <span className={globalStyle.visuallyHidden}>Instagram</span>
-              <i className='fab fa-instagram' />
-            </a>
-          </li>
-          <li>
-            <a href='http://twitter.com/m_r_peet'>
-              <span className={globalStyle.visuallyHidden}>Twitter</span>
-              <i className='fab fa-twitter' />
-            </a>
-          </li>
+        <ul
+          className={`${navigationStyle.navList} ${navigationStyle.socialLinkList}`}
+        >
+          {socialListItems}
         </ul>
       </nav>
       <nav aria-labelledby='main-nav-label'>
