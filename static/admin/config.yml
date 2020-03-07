@@ -20,6 +20,23 @@ collections:
         name: 'index'
         fields:
           - { label: 'Header Logo', name: 'headerLogo', widget: 'image' }
+          - label: 'Social Links'
+            name: 'socialLinks'
+            widget: 'list'
+            fields:
+              - {
+                  label: 'Alt description',
+                  hint: 'Text to use in place of image e.g. Instagram',
+                  name: 'description',
+                  widget: 'string',
+                }
+              - { label: 'URL', name: 'url', widget: 'string' }
+              - {
+                  label: 'Font Awesome Icon Classname',
+                  hint: 'Text from the class property of the chosen icon from https://fontawesome.com/icons',
+                  name: 'faIcon',
+                  widget: string,
+                }
           - {
               label: 'Template Key',
               name: 'templateKey',
