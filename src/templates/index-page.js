@@ -5,20 +5,28 @@ import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import indexStyle from './index.module.css';
 
-const IndexPage = ({ data }) => {
+export const IndexPageTemplate = ({ headerLogoUrl, socialLinks = [] }) => {
   const currentYear = new Date().getFullYear();
+  return (
+    <div className={indexStyle.container}>
+      <Header logoSrc={headerLogoUrl} />
+      <Navigation socialLinks={socialLinks} />
+      <footer className={indexStyle.footer}>
+        <p>&copy; {currentYear} Matt Peet</p>
+      </footer>
+    </div>
+  );
+};
 
+const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark;
   const { headerLogo, socialLinks } = frontmatter;
   return (
     <Layout>
-      <div className={indexStyle.container}>
-        <Header logoSrc={headerLogo.publicURL} />
-        <Navigation socialLinks={socialLinks} />
-        <footer className={indexStyle.footer}>
-          <p>&copy; {currentYear} Matt Peet</p>
-        </footer>
-      </div>
+      <IndexPageTemplate
+        headerLogoUrl={headerLogo.publicURL}
+        socialLinks={socialLinks}
+      />
     </Layout>
   );
 };
