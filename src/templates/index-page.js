@@ -1,17 +1,25 @@
 import React from 'react';
 import Header from '../components/Header/Header';
 import Navigation from '../components/Navigation/Navigation';
+import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
-import indexStyle from './index.module.css'
+import indexStyle from './index.module.css';
 
 const IndexPage = ({ data }) => {
+  const currentYear = new Date().getFullYear();
+
   const { frontmatter } = data.markdownRemark;
-  const { headerLogo } = frontmatter;
+  const { headerLogo, socialLinks } = frontmatter;
   return (
-    <div className={indexStyle.container}>
-      <Header logoSrc={headerLogo.publicURL} />
-      <Navigation />
-    </div>
+    <Layout>
+      <div className={indexStyle.container}>
+        <Header logoSrc={headerLogo.publicURL} />
+        <Navigation socialLinks={socialLinks} />
+        <footer className={indexStyle.footer}>
+          <p>&copy; {currentYear} Matt Peet</p>
+        </footer>
+      </div>
+    </Layout>
   );
 };
 
@@ -23,6 +31,11 @@ export const pageQuery = graphql`
       frontmatter {
         headerLogo {
           publicURL
+        }
+        socialLinks {
+          description
+          faIcon
+          url
         }
       }
     }
