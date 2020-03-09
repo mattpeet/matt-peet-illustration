@@ -5,27 +5,55 @@ import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import indexStyle from './index.module.css';
 
-export const IndexPageTemplate = ({ headerLogoUrl, socialLinks = [] }) => {
+const getProjectListItems = projectData =>
+  projectData.map((x, index) => {
+    const key = `project-thumb-${index}`;
+    return (
+      <li key={key}>
+        <img
+          className={indexStyle.thumbnail}
+          src={x.frontmatter.thumbnail.publicURL}
+          alt={x.frontmatter.title}
+        />
+      </li>
+    );
+  });
+
+export const IndexPageTemplate = ({
+  headerLogoUrl,
+  socialLinks = [],
+  projectData = []
+}) => {
   const currentYear = new Date().getFullYear();
   return (
-    <div className={indexStyle.container}>
-      <Header logoSrc={headerLogoUrl} />
-      <Navigation socialLinks={socialLinks} />
-      <footer className={indexStyle.footer}>
+    <>
+      <div className={indexStyle.containerGrid}>
+        <div>
+          <Header logoSrc={headerLogoUrl} id='header' />
+          <Navigation socialLinks={socialLinks} id='navigation' />
+        </div>
+        <ul className={indexStyle.thumbnailGridList} id='thumbnails'>
+          {getProjectListItems(projectData)}
+        </ul>
+      </div>
+      <footer className={indexStyle.footer} id='footer'>
         <p>&copy; {currentYear} Matt Peet</p>
       </footer>
-    </div>
+    </>
   );
 };
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark;
-  const { headerLogo, socialLinks } = frontmatter;
+  const { home = {}, projects = {} } = data || {};
+  const projectData = projects.nodes || [];
+  const { frontmatter: homeDetail = {} } = home.nodes[0];
+  const { headerLogo, socialLinks } = homeDetail;
   return (
     <Layout>
       <IndexPageTemplate
         headerLogoUrl={headerLogo.publicURL}
         socialLinks={socialLinks}
+        projectData={projectData}
       />
     </Layout>
   );
@@ -35,15 +63,31 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        headerLogo {
-          publicURL
+    home: allMarkdownRemark(
+      filter: { frontmatter: { templateKey: { eq: "index-page" } } }
+    ) {
+      nodes {
+        frontmatter {
+          headerLogo {
+            publicURL
+          }
+          socialLinks {
+            description
+            faIcon
+            url
+          }
         }
-        socialLinks {
-          description
-          faIcon
-          url
+      }
+    }
+    projects: allMarkdownRemark(
+      filter: { frontmatter: { templateKey: { eq: "project-page" } } }
+    ) {
+      nodes {
+        frontmatter {
+          title
+          thumbnail {
+            publicURL
+          }
         }
       }
     }
