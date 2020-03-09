@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header/Header';
 import Navigation from '../components/Navigation/Navigation';
 import Layout from '../components/Layout';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import indexStyle from './index.module.css';
 
 const getProjectListItems = projectData =>
@@ -10,11 +10,13 @@ const getProjectListItems = projectData =>
     const key = `project-thumb-${index}`;
     return (
       <li key={key}>
-        <img
-          className={indexStyle.thumbnail}
-          src={x.frontmatter.thumbnail.publicURL}
-          alt={x.frontmatter.title}
-        />
+        <Link to={x.fields.slug}>
+          <img
+            className={indexStyle.thumbnail}
+            src={x.frontmatter.thumbnail.publicURL}
+            alt={x.frontmatter.title}
+          />
+        </Link>
       </li>
     );
   });
@@ -88,6 +90,9 @@ export const pageQuery = graphql`
           thumbnail {
             publicURL
           }
+        }
+        fields {
+          slug
         }
       }
     }
