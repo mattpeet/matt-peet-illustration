@@ -44,14 +44,61 @@
   }
 }
 
+.thumbListItem {
+  position: relative;
+  height: 250px;
+  width: 90%;
+  margin: auto;
+}
+
+.thumbListItem:focus-within .thumbnailOverlay {
+  opacity: 0.75;
+  transition: opacity 0.3s ease-in-out 0s;
+}
+
 .thumbnail {
   display: block;
-  width: 90%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: auto;
-  margin: auto;
+}
+
+.thumbnailOverlay {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-size: 1.2rem;
+  opacity: 0;
+}
+
+.thumbnailOverlay:hover {
+  opacity: 0.75;
+  transition: opacity 0.3s ease-in-out 0s;
+}
+
+.thumbnailOverlay p {
+  padding: 8px;
 }
 
 .footer {
   font-size: 0.8rem;
   padding: 25px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

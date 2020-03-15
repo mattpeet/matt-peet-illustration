@@ -61,6 +61,11 @@ collections:
           widget: 'string',
         }
       - { label: 'Home Page Thumbnail', name: 'thumbnail', widget: 'image' }
+      - {
+          label: 'Home Page Thumbnail Title',
+          name: 'thumbnailTitle',
+          widget: 'string',
+        }
       - { label: 'Social Sharing Image', name: 'socialImage', widget: 'image' }
       - label: 'Images'
         name: 'images'

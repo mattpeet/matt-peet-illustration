@@ -3,6 +3,7 @@ title: New project with images in schema
 templateKey: "project-page"
 seo-keywords: 'project, version, example'
 thumbnail: /img/dog3.jpg
+thumbnailTitle: New Project
 social-image: /img/dog3.jpg
 images:
   - alt-text: doggo

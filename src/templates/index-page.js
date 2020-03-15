@@ -9,13 +9,16 @@ const getProjectListItems = projectData =>
   projectData.map((x, index) => {
     const key = `project-thumb-${index}`;
     return (
-      <li key={key}>
+      <li key={key} className={indexStyle.thumbListItem}>
         <Link to={x.fields.slug}>
           <img
             className={indexStyle.thumbnail}
             src={x.frontmatter.thumbnail.publicURL}
-            alt={x.frontmatter.title}
+            alt=""
           />
+          <div className={indexStyle.thumbnailOverlay}>
+            <p>{x.frontmatter.thumbnailTitle}</p>
+          </div>
         </Link>
       </li>
     );
@@ -28,7 +31,10 @@ export const IndexPageTemplate = ({
 }) => {
   const currentYear = new Date().getFullYear();
   return (
-    <>
+    <main>
+      <h1 className={indexStyle.visuallyHidden}>
+        Projects: Matt Peet Illustration
+      </h1>
       <div className={indexStyle.containerGrid}>
         <div>
           <Header logoSrc={headerLogoUrl} id='header' />
@@ -41,7 +47,7 @@ export const IndexPageTemplate = ({
       <footer className={indexStyle.footer} id='footer'>
         <p>&copy; {currentYear} Matt Peet</p>
       </footer>
-    </>
+    </main>
   );
 };
 
@@ -90,6 +96,7 @@ export const pageQuery = graphql`
           thumbnail {
             publicURL
           }
+          thumbnailTitle
         }
         fields {
           slug
