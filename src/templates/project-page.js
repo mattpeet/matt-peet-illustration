@@ -1,13 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import projectStyle from './project.module.css';
 import Layout from '../components/Layout/Layout';
 import globalStyles from '../components/global.module.css';
 
 export const ProjectPageTemplate = ({ title = '', images = [] }) => {
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [activeImage, setActiveImage] = useState(images[0]);
+
+  useEffect(() => {
+    setActiveImage(images[activeSlideIndex]);
+  }, [activeSlideIndex, images]);
+
+  const { altText, description, imageTitle } = activeImage;
+  const { publicURL } = activeImage.image;
+
   return (
     <main>
       <h1 className={globalStyles.visuallyHidden}>{title}</h1>
+      <div className={projectStyle.imageContainer}>
+        <button
+          disabled={activeSlideIndex === 0}
+          className={projectStyle.carouselButton}
+          onClick={() => {
+            setActiveSlideIndex(activeSlideIndex - 1);
+          }}
+        >
+          <span class={globalStyles.visuallyHidden}>Previous image</span>
+          <i class='fas fa-chevron-left' />
+        </button>
+        <img
+          alt={altText}
+          src={publicURL}
+          className={projectStyle.activeImage}
+        />
+        <button
+          disabled={activeSlideIndex === images.length - 1}
+          className={projectStyle.carouselButton}
+          onClick={() => {
+            setActiveSlideIndex(activeSlideIndex + 1);
+          }}
+        >
+          <span class={globalStyles.visuallyHidden}>Next image</span>
+          <i class='fas fa-chevron-right' />
+        </button>
+      </div>
     </main>
   );
 };
@@ -21,7 +58,10 @@ const ProjectPage = ({ data = {} }) => {
 
   return (
     <Layout headerLogoUrl={headerLogo.publicURL} socialLinks={socialLinks}>
-      <ProjectPageTemplate title={frontmatter.title} />
+      <ProjectPageTemplate
+        title={frontmatter.title}
+        images={frontmatter.images}
+      />
     </Layout>
   );
 };

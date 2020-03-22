@@ -29,13 +29,13 @@ a:hover {
 
 @media (min-width: 825px) and (orientation: landscape) {
   .containerGrid {
-    grid-template-columns: 30% auto;
+    grid-template-columns: 30% 70%;
   }
 }
 
 @media (min-width: 1024px) {
   .containerGrid {
-    grid-template-columns: 25% auto;
+    grid-template-columns: 25% 75%;
   }
 }
 

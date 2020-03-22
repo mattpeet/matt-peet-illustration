@@ -1,10 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import useSiteMetadata from '../SiteMetadata';
 import { withPrefix } from 'gatsby';
-import globalStyles from '../global.module.css';
+import useSiteMetadata from '../SiteMetadata';
 import Header from '../Header/Header';
 import Navigation from '../Navigation/Navigation';
+import globalStyles from '../global.module.css';
 
 export default function Layout({ children, socialLinks, headerLogoUrl }) {
   const { title, description } = useSiteMetadata();

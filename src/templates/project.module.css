@@ -1,0 +1,27 @@
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activeImage {
+  max-width: 90%;
+}
+
+.carouselButton {
+  border: none;
+  background-color: transparent;
+}
+
+.carouselButton:active {
+  outline: none;
+}
+
+.carouselButton i {
+  font-size: 2rem;
+  margin: 8px;
+}
+
+.carouselButton i:hover {
+  color: gray;
+}
