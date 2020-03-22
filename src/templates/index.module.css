@@ -1,21 +1,3 @@
-.containerGrid {
-  display: grid;
-  grid-template-columns: auto;
-  padding: 25px;
-}
-
-@media (min-width: 825px) and (orientation: landscape) {
-  .containerGrid {
-    grid-template-columns: 30% auto;
-  }
-}
-
-@media (min-width: 1024px) {
-  .containerGrid {
-    grid-template-columns: 25% auto;
-  }
-}
-
 .thumbnailGridList {
   grid-column: 1;
   display: grid;
@@ -87,18 +69,4 @@
 
 .thumbnailOverlay p {
   padding: 8px;
-}
-
-.footer {
-  font-size: 0.8rem;
-  padding: 25px;
-}
-
-.visuallyHidden {
-  position: absolute;
-  left: -10000px;
-  top: auto;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
 }

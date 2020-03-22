@@ -1,9 +1,8 @@
 import React from 'react';
-import Header from '../components/Header/Header';
-import Navigation from '../components/Navigation/Navigation';
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 import { graphql, Link } from 'gatsby';
 import indexStyle from './index.module.css';
+import globalStyles from '../components/global.module.css'
 
 const getProjectListItems = projectData =>
   projectData.map((x, index) => {
@@ -14,7 +13,7 @@ const getProjectListItems = projectData =>
           <img
             className={indexStyle.thumbnail}
             src={x.frontmatter.thumbnail.publicURL}
-            alt=""
+            alt=''
           />
           <div className={indexStyle.thumbnailOverlay}>
             <p>{x.frontmatter.thumbnailTitle}</p>
@@ -24,29 +23,13 @@ const getProjectListItems = projectData =>
     );
   });
 
-export const IndexPageTemplate = ({
-  headerLogoUrl,
-  socialLinks = [],
-  projectData = []
-}) => {
-  const currentYear = new Date().getFullYear();
+export const IndexPageTemplate = ({ projectData = [] }) => {
   return (
     <main>
-      <h1 className={indexStyle.visuallyHidden}>
-        Projects: Matt Peet Illustration
-      </h1>
-      <div className={indexStyle.containerGrid}>
-        <div>
-          <Header logoSrc={headerLogoUrl} id='header' />
-          <Navigation socialLinks={socialLinks} id='navigation' />
-        </div>
-        <ul className={indexStyle.thumbnailGridList} id='thumbnails'>
-          {getProjectListItems(projectData)}
-        </ul>
-      </div>
-      <footer className={indexStyle.footer} id='footer'>
-        <p>&copy; {currentYear} Matt Peet</p>
-      </footer>
+      <h1 className={globalStyles.visuallyHidden}>Projects</h1>
+      <ul className={indexStyle.thumbnailGridList} id='thumbnails'>
+        {getProjectListItems(projectData)}
+      </ul>
     </main>
   );
 };
@@ -57,12 +40,8 @@ const IndexPage = ({ data }) => {
   const { frontmatter: homeDetail = {} } = home.nodes[0];
   const { headerLogo, socialLinks } = homeDetail;
   return (
-    <Layout>
-      <IndexPageTemplate
-        headerLogoUrl={headerLogo.publicURL}
-        socialLinks={socialLinks}
-        projectData={projectData}
-      />
+    <Layout headerLogoUrl={headerLogo.publicURL} socialLinks={socialLinks}>
+      <IndexPageTemplate projectData={projectData} />
     </Layout>
   );
 };

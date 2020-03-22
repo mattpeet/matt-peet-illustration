@@ -1,25 +1,13 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import projectStyle from './project.module.css';
-import indexStyle from './index.module.css';
-import Header from '../components/Header/Header';
-import Navigation from '../components/Navigation/Navigation';
+import Layout from '../components/Layout/Layout';
+import globalStyles from '../components/global.module.css';
 
-export const ProjectPageTemplate = ({
-  title = '',
-  images = [],
-  headerLogoUrl = '',
-  socialLinks = []
-}) => {
+export const ProjectPageTemplate = ({ title = '', images = [] }) => {
   return (
     <main>
-      <h1 className={indexStyle.visuallyHidden}>{title}</h1>
-      <div className={indexStyle.containerGrid}>
-        <div>
-          <Header logoSrc={headerLogoUrl} id='header' />
-          <Navigation socialLinks={socialLinks} id='navigation' />
-        </div>
-      </div>
+      <h1 className={globalStyles.visuallyHidden}>{title}</h1>
     </main>
   );
 };
@@ -32,11 +20,9 @@ const ProjectPage = ({ data = {} }) => {
   const { frontmatter = {} } = project.nodes[0];
 
   return (
-    <ProjectPageTemplate
-      title={frontmatter.title}
-      headerLogoUrl={headerLogo.publicURL}
-      socialLinks={socialLinks}
-    />
+    <Layout headerLogoUrl={headerLogo.publicURL} socialLinks={socialLinks}>
+      <ProjectPageTemplate title={frontmatter.title} />
+    </Layout>
   );
 };
 
