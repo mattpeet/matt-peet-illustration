@@ -1,17 +1,20 @@
 ---
 title: New project with images in schema
-templateKey: "project-page"
-seo-keywords: 'project, version, example'
+templateKey: project-page
+seoKeywords: 'test, something, else'
 thumbnail: /img/dog3.jpg
-social-image: /img/dog3.jpg
+thumbnailTitle: Project of dogs
+socialImage: /img/dog1.jpg
 images:
-  - alt-text: doggo
-    description: This is the first img description
+  - altText: image one
+    description: 'This is the first img description with a [hyperlink](www.google.com)'
     image: /img/dog2.jpg
-    image-title: This is the first image
-  - alt-text: another doggo
-    description: Image 2 description
+    imageTitle: Image One
+  - altText: Image two
+    description: >-
+      Image 2 description. I also have a [link](www.guardian.co.uk). And some
+      **formatting**.
     image: /img/dog1.jpg
-    image-title: This is image 2
+    imageTitle: Image Two
 ---
 
