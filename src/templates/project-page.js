@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
+import ReactMarkdown from 'react-markdown'
 import projectStyle from './project.module.css';
 import Layout from '../components/Layout/Layout';
 import globalStyles from '../components/global.module.css';
@@ -7,6 +8,7 @@ import globalStyles from '../components/global.module.css';
 export const ProjectPageTemplate = ({ title = '', images = [] }) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [activeImage, setActiveImage] = useState(images[0]);
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
 
   useEffect(() => {
     setActiveImage(images[activeSlideIndex]);
@@ -26,8 +28,8 @@ export const ProjectPageTemplate = ({ title = '', images = [] }) => {
             setActiveSlideIndex(activeSlideIndex - 1);
           }}
         >
-          <span class={globalStyles.visuallyHidden}>Previous image</span>
-          <i class='fas fa-chevron-left' />
+          <span className={globalStyles.visuallyHidden}>Previous image</span>
+          <i className='fas fa-chevron-left' aria-hidden='true' />
         </button>
         <img
           alt={altText}
@@ -41,9 +43,42 @@ export const ProjectPageTemplate = ({ title = '', images = [] }) => {
             setActiveSlideIndex(activeSlideIndex + 1);
           }}
         >
-          <span class={globalStyles.visuallyHidden}>Next image</span>
-          <i class='fas fa-chevron-right' />
+          <span className={globalStyles.visuallyHidden}>Next image</span>
+          <i className='fas fa-chevron-right' aria-hidden='true' />
         </button>
+      </div>
+      {isDescriptionOpen && (
+        <div
+          className={`${projectStyle.description} ${projectStyle.popoverDescription}`}
+          id='description-popover'
+          aria-describedby='open-description'
+        >
+          <div>
+            <h2 className={projectStyle.descriptionTitle}>{imageTitle}</h2>
+            <ReactMarkdown source={description} />
+          </div>
+          <button onClick={() => setIsDescriptionOpen(false)}>
+            <span className={globalStyles.visuallyHidden}>
+              Close description
+            </span>
+            <i className='fas fa-times' aria-hidden='true' />
+          </button>
+        </div>
+      )}
+      {!isDescriptionOpen && (
+        <button
+          onClick={() => setIsDescriptionOpen(true)}
+          className={projectStyle.infoButton}
+        >
+          <span className={globalStyles.visuallyHidden} id='open-description'>
+            Image information
+          </span>
+          <i className='fas fa-info-circle' aria-hidden='true' />
+        </button>
+      )}
+      <div className={`${projectStyle.staticDescription} ${projectStyle.description}`}>
+        <h2 className={projectStyle.descriptionTitle}>{imageTitle}</h2>
+        <ReactMarkdown source={description} />
       </div>
     </main>
   );
@@ -74,14 +109,16 @@ export const pageQuery = graphql`
           title
           seo_keywords
           images {
-            alt_text
+            altText
             description
-            image_title
+            imageTitle
             image {
               publicURL
             }
           }
-          social_image
+          socialImage {
+            publicURL
+          }
         }
       }
     }

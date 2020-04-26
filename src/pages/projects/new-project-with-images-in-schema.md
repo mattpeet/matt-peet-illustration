@@ -4,7 +4,7 @@ templateKey: project-page
 seoKeywords: 'test, something, else'
 thumbnail: /img/dog3.jpg
 thumbnailTitle: New Project
-social-image: /img/dog3.jpg
+socialImage: /img/dog3.jpg
 images:
   - altText: image one
     description: 'This is the first img description with a [hyperlink](www.google.com)'
