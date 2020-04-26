@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 import projectStyle from './project.module.css';
 import Layout from '../components/Layout/Layout';
 import globalStyles from '../components/global.module.css';
@@ -76,7 +76,9 @@ export const ProjectPageTemplate = ({ title = '', images = [] }) => {
           <i className='fas fa-info-circle' aria-hidden='true' />
         </button>
       )}
-      <div className={`${projectStyle.staticDescription} ${projectStyle.description}`}>
+      <div
+        className={`${projectStyle.staticDescription} ${projectStyle.description}`}
+      >
         <h2 className={projectStyle.descriptionTitle}>{imageTitle}</h2>
         <ReactMarkdown source={description} />
       </div>

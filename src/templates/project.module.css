@@ -76,6 +76,10 @@
   margin-bottom: 0;
 }
 
+.infoButton i {
+  color: black;
+}
+
 @media (min-width: 825px) and (orientation: landscape) {
   .infoButton {
     display: none;
