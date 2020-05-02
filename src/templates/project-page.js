@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
 import projectStyle from './project.module.css';
@@ -10,9 +10,21 @@ export const ProjectPageTemplate = ({ title = '', images = [] }) => {
   const [activeImage, setActiveImage] = useState(images[0]);
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
 
+  const infoButtonRef = useRef();
+  const closeInfoButtonRef = useRef();
+
   useEffect(() => {
     setActiveImage(images[activeSlideIndex]);
   }, [activeSlideIndex, images]);
+
+  useEffect(() => {
+    if (isDescriptionOpen && closeInfoButtonRef.current) {
+      closeInfoButtonRef.current.focus();
+    }
+    if (!isDescriptionOpen && infoButtonRef.current) {
+      infoButtonRef.current.focus();
+    }
+  }, [isDescriptionOpen, infoButtonRef, closeInfoButtonRef]);
 
   const { altText, description, imageTitle } = activeImage;
   const { publicURL } = activeImage.image;
@@ -57,7 +69,11 @@ export const ProjectPageTemplate = ({ title = '', images = [] }) => {
             <h2 className={projectStyle.descriptionTitle}>{imageTitle}</h2>
             <ReactMarkdown source={description} />
           </div>
-          <button onClick={() => setIsDescriptionOpen(false)}>
+          <button
+            className={projectStyle.iconButton}
+            onClick={() => setIsDescriptionOpen(false)}
+            ref={closeInfoButtonRef}
+          >
             <span className={globalStyles.visuallyHidden}>
               Close description
             </span>
@@ -67,8 +83,9 @@ export const ProjectPageTemplate = ({ title = '', images = [] }) => {
       )}
       {!isDescriptionOpen && (
         <button
+          ref={infoButtonRef}
           onClick={() => setIsDescriptionOpen(true)}
-          className={projectStyle.infoButton}
+          className={`${projectStyle.infoButton} ${projectStyle.iconButton}`}
         >
           <span className={globalStyles.visuallyHidden} id='open-description'>
             Image information

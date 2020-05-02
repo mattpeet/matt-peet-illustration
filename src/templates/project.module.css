@@ -80,6 +80,20 @@
   color: black;
 }
 
+.iconButton {
+  border: none;
+  background-color: transparent;
+  height: min-content;
+  padding: 10px;
+  align-self: center;
+}
+
+.iconButton:focus {
+  outline: none;
+  background-color: rgb(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
 @media (min-width: 825px) and (orientation: landscape) {
   .infoButton {
     display: none;
