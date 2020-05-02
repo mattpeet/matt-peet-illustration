@@ -3,8 +3,8 @@ title: New project with images in schema
 templateKey: project-page
 seoKeywords: 'test, something, else'
 thumbnail: /img/dog3.jpg
-thumbnailTitle: Project of dogs
-socialImage: /img/dog1.jpg
+thumbnailTitle: New Project
+socialImage: /img/dog3.jpg
 images:
   - altText: image one
     description: 'This is the first img description with a [hyperlink](www.google.com)'

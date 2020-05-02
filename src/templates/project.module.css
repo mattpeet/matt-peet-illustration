@@ -1,0 +1,101 @@
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activeImage {
+  max-width: 90%;
+}
+
+.carouselButton {
+  border: none;
+  background-color: transparent;
+}
+
+.carouselButton:active {
+  outline: none;
+}
+
+.carouselButton i {
+  font-size: 2rem;
+  margin: 8px;
+}
+
+.carouselButton i:hover {
+  color: gray;
+}
+
+.infoButton {
+  font-size: 1.5rem;
+  color: gray;
+  float: right;
+  padding: 15px;
+}
+
+.description {
+  padding: 15px 20px 15px 20px;
+}
+
+.staticDescription {
+  display: none;
+}
+
+.popoverDescription {
+  display: flex;
+  justify-content: space-between;
+  background-color: gray;
+  color: white;
+  margin-left: -35px;
+  margin-right: -35px;
+}
+
+.description i {
+  color: white;
+  font-size: 1.2rem;
+}
+
+.popoverDescription a {
+  color: white;
+}
+
+.description a {
+  text-decoration: underline;
+}
+
+.description p {
+  margin-top: 5px;
+}
+
+.popoverDescription p {
+  margin-left: 20px;
+}
+
+.descriptionTitle {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+.infoButton i {
+  color: black;
+}
+
+@media (min-width: 825px) and (orientation: landscape) {
+  .infoButton {
+    display: none;
+  }
+  .staticDescription {
+    display: block;
+    text-align: right;
+  }
+}
+
+@media (min-width: 1024px) {
+  .infoButton {
+    display: none;
+  }
+  .staticDescription {
+    display: block;
+    text-align: right;
+  }
+}

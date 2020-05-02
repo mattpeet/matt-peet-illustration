@@ -1,33 +1,143 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql, Link } from 'gatsby';
+import React, { useState, useEffect } from 'react';
+import { graphql } from 'gatsby';
+import ReactMarkdown from 'react-markdown';
+import projectStyle from './project.module.css';
+import Layout from '../components/Layout/Layout';
+import globalStyles from '../components/global.module.css';
 
-const ProjectPage = ({ data }) => {
-  const { markdownRemark: project } = data;
-  return <h1>{project.frontmatter.title}</h1>;
+export const ProjectPageTemplate = ({ title = '', images = [] }) => {
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+  const [activeImage, setActiveImage] = useState(images[0]);
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
+
+  useEffect(() => {
+    setActiveImage(images[activeSlideIndex]);
+  }, [activeSlideIndex, images]);
+
+  const { altText, description, imageTitle } = activeImage;
+  const { publicURL } = activeImage.image;
+
+  return (
+    <main>
+      <h1 className={globalStyles.visuallyHidden}>{title}</h1>
+      <div className={projectStyle.imageContainer}>
+        <button
+          disabled={activeSlideIndex === 0}
+          className={projectStyle.carouselButton}
+          onClick={() => {
+            setActiveSlideIndex(activeSlideIndex - 1);
+          }}
+        >
+          <span className={globalStyles.visuallyHidden}>Previous image</span>
+          <i className='fas fa-chevron-left' aria-hidden='true' />
+        </button>
+        <img
+          alt={altText}
+          src={publicURL}
+          className={projectStyle.activeImage}
+        />
+        <button
+          disabled={activeSlideIndex === images.length - 1}
+          className={projectStyle.carouselButton}
+          onClick={() => {
+            setActiveSlideIndex(activeSlideIndex + 1);
+          }}
+        >
+          <span className={globalStyles.visuallyHidden}>Next image</span>
+          <i className='fas fa-chevron-right' aria-hidden='true' />
+        </button>
+      </div>
+      {isDescriptionOpen && (
+        <div
+          className={`${projectStyle.description} ${projectStyle.popoverDescription}`}
+          id='description-popover'
+          aria-describedby='open-description'
+        >
+          <div>
+            <h2 className={projectStyle.descriptionTitle}>{imageTitle}</h2>
+            <ReactMarkdown source={description} />
+          </div>
+          <button onClick={() => setIsDescriptionOpen(false)}>
+            <span className={globalStyles.visuallyHidden}>
+              Close description
+            </span>
+            <i className='fas fa-times' aria-hidden='true' />
+          </button>
+        </div>
+      )}
+      {!isDescriptionOpen && (
+        <button
+          onClick={() => setIsDescriptionOpen(true)}
+          className={projectStyle.infoButton}
+        >
+          <span className={globalStyles.visuallyHidden} id='open-description'>
+            Image information
+          </span>
+          <i className='fas fa-info-circle' aria-hidden='true' />
+        </button>
+      )}
+      <div
+        className={`${projectStyle.staticDescription} ${projectStyle.description}`}
+      >
+        <h2 className={projectStyle.descriptionTitle}>{imageTitle}</h2>
+        <ReactMarkdown source={description} />
+      </div>
+    </main>
+  );
+};
+
+const ProjectPage = ({ data = {} }) => {
+  const { project = { nodes: [] }, home = { nodes: [] } } = data;
+  const { frontmatter: homeDetail = {} } = home.nodes[0];
+  const { headerLogo, socialLinks } = homeDetail;
+
+  const { frontmatter = {} } = project.nodes[0];
+
+  return (
+    <Layout headerLogoUrl={headerLogo.publicURL} socialLinks={socialLinks}>
+      <ProjectPageTemplate
+        title={frontmatter.title}
+        images={frontmatter.images}
+      />
+    </Layout>
+  );
 };
 
 export const pageQuery = graphql`
   query ProjectByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      id
-      html
-      frontmatter {
-        title
-        seo_keywords
-        thumbnail {
-          id
-          publicURL
-        }
-        images {
-          alt_text
-          description
-          image_title
-          image {
+    project: allMarkdownRemark(filter: { id: { eq: $id } }) {
+      nodes {
+        frontmatter {
+          title
+          seo_keywords
+          images {
+            altText
+            description
+            imageTitle
+            image {
+              publicURL
+            }
+          }
+          socialImage {
             publicURL
           }
         }
-        social_image
+      }
+    }
+    home: allMarkdownRemark(
+      filter: { frontmatter: { templateKey: { eq: "index-page" } } }
+    ) {
+      nodes {
+        frontmatter {
+          headerLogo {
+            publicURL
+          }
+          socialLinks {
+            description
+            faIcon
+            url
+          }
+        }
       }
     }
   }
