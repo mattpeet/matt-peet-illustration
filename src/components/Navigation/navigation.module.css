@@ -27,6 +27,12 @@
   align-items: center;
 }
 
+.dropdownButton {
+  border: none;
+  background-color: transparent;
+  height: min-content;
+}
+
 .dropdownButton i {
   margin-right: 0;
 }
@@ -44,6 +50,7 @@
   right: 0;
   min-width: 100px;
   text-align: right;
+  z-index: 1;
 }
 
 .dropdownList li {
