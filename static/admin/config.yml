@@ -43,6 +43,17 @@ collections:
               widget: 'hidden',
               default: 'index-page',
             }
+      - file: 'src/pages/about.md'
+        label: 'About'
+        name: 'about'
+        fields:
+          - { label: 'Header Logo', name: 'headerLogo', widget: 'image' }
+          - {
+              label: 'Template Key',
+              name: 'templateKey',
+              widget: 'hidden',
+              default: 'about-page',
+            }
   - name: 'projects'
     label: 'projects'
     folder: 'src/pages/projects'
