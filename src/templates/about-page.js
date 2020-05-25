@@ -1,6 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import ReactMarkdown from 'react-markdown';
+import Layout from '../components/Layout/Layout';
+import globalStyles from '../components/global.module.css';
 
 export const AboutPageTemplate = ({ }) => {
 
@@ -31,11 +33,28 @@ export default AboutPage
 
 export const aboutPageQuery = graphql`
   query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
+    about: allMarkdownRemark(filter: { id: { eq: $id } }) {
+      nodes {
+        frontmatter {
+          blurb
+        }
+      }
+    }
+    home: allMarkdownRemark(
+      filter: { frontmatter: { templateKey: { eq: "index-page" } } }
+    ) {
+      nodes {
+        frontmatter {
+          headerLogo {
+            publicURL
+          }
+          socialLinks {
+            description
+            faIcon
+            url
+          }
+        }
       }
     }
   }
-`
+`;

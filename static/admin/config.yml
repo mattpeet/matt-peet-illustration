@@ -49,8 +49,8 @@ collections:
         name: 'about'
         fields:
           - {
-            label: 'Content',
-            name: 'content',
+            label: 'Blurb',
+            name: 'blurb',
             widget: 'markdown'
           }
           - {
