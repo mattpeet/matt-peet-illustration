@@ -2,14 +2,15 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import ReactMarkdown from 'react-markdown';
 import Layout from '../components/Layout/Layout';
-import '../components/global.module.css';
+import globalStyles from '../components/global.module.css';
 import aboutStyles from './about.module.css';
 
 export const AboutPageTemplate = ({ content }) => {
   return (
-    <div className={aboutStyles.wrapper}>
+    <main className={aboutStyles.wrapper}>
+      <h1 className={globalStyles.visuallyHidden}>About</h1>
       <ReactMarkdown source={content} />
-    </div>
+    </main>
   );
 };
 
