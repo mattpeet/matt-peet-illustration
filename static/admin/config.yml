@@ -59,6 +59,40 @@ collections:
               widget: 'hidden',
               default: 'about-page',
             }
+      - file: 'src/pages/contact.md'
+        label: 'Contact'
+        name: 'contact'
+        fields: 
+          - {
+              label: 'Template Key',
+              name: 'templateKey',
+              widget: 'hidden',
+              default: 'contact-page',
+            }
+          - label: 'Links'
+            name: 'contactLinks'
+            widget: 'list'
+            fields:
+              - {
+                  label: "Text",
+                  hint: "Text to visibly show next to icon",
+                  name: 'visibleText',
+                  widget: 'string'
+                }
+              - {
+                  label: 'Alt description',
+                  hint: 'Text to use in place of image e.g. Instagram',
+                  name: 'description',
+                  widget: 'string',
+                }
+              - { label: 'URL', name: 'url', widget: 'string' }
+              - {
+                  label: 'Font Awesome Icon Classname',
+                  hint: 'Text from the class property of the chosen icon from https://fontawesome.com/icons',
+                  name: 'faIcon',
+                  widget: string,
+                }
+
   - name: 'projects'
     label: 'projects'
     folder: 'src/pages/projects'
