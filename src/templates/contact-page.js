@@ -1,10 +1,32 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout/Layout';
-import '../components/global.module.css';
+import globalStyles from '../components/global.module.css';
+import contactStyles from './contact.module.css';
 
-export const ContactPageTemplate = ({ contactlinks = [] }) => {
-  return <h1>contact</h1>;
+export const ContactPageTemplate = ({ contactLinks = [] }) => {
+  const contactListItems = contactLinks.map((link, index) => {
+    const { description, visibleText, url, faIcon } = link;
+    const key = `contact-link-${index}`;
+
+    return (
+      <li key={key} className={contactStyles.contactListItem}>
+        <Link to={url} aria-hidden='true' className={contactStyles.iconLink}>
+          <i aria-hidden='true' className={`${faIcon} ${contactStyles.icon}`} />
+        </Link>
+        <Link to={url} aria-label={description}>
+          {visibleText}
+        </Link>
+      </li>
+    );
+  });
+
+  return (
+    <main className={contactStyles.wrapper}>
+      <h1 className={globalStyles.visuallyHidden}>Contact</h1>
+      <ul className={contactStyles.contactList}>{contactListItems}</ul>
+    </main>
+  );
 };
 
 const ContactPage = ({ data = {} }) => {
@@ -16,7 +38,7 @@ const ContactPage = ({ data = {} }) => {
 
   return (
     <Layout headerLogoUrl={headerLogo.publicURL} socialLinks={socialLinks}>
-      <ContactPageTemplate content={frontmatter.contactlinks} />
+      <ContactPageTemplate contactLinks={frontmatter.contactLinks} />
     </Layout>
   );
 };

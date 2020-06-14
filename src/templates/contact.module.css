@@ -1,0 +1,27 @@
+.contactList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contactListItem {
+  padding-bottom: 1rem;
+}
+
+.iconLink {
+  margin-right: 1rem;
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.wrapper {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    margin-top: 5rem;
+  }
+}
