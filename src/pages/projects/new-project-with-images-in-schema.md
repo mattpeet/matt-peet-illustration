@@ -8,7 +8,7 @@ socialImage: /img/dog3.jpg
 images:
   - altText: image one
     description: 'This is the first img description with a [hyperlink](www.google.com)'
-    image: /img/dog2.jpg
+    image: /img/15863204007_42ba9914b1_o.jpg
     imageTitle: Image One
   - altText: Image two
     description: >-
