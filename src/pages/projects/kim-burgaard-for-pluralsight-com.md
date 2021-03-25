@@ -22,6 +22,6 @@ images:
       [**Pluralsight.com**](https://www.pluralsight.com/blog/teams/process-of-change-kim-burgaard)**,
       2021**
     image: /img/pluralsight-kimburgaard-screenshot.png
-    imageTitle: Kim Burgaard screenshot
+    imageTitle: Kim Burgaard
 ---
 
