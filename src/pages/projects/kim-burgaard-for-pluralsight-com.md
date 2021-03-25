@@ -2,9 +2,9 @@
 title: Kim Burgaard for Pluralsight.com
 templateKey: project-page
 seoKeywords: 'portrait, illustration, portrait illustration, matt peet illustration'
-thumbnail: /img/pluralsight-kimburgaard-870x580px.jpg
+thumbnail: /img/pluralsight-kimburgaard-1200x636px.jpg
 thumbnailTitle: Portrait illustration for Pluralsight.com
-socialImage: /img/pluralsight-kimburgaard-870x580px.jpg
+socialImage: /img/pluralsight-kimburgaard-1200x636px.jpg
 images:
   - altText: 'Portrait illustration, Kim Burgaard for Pluralsight.com'
     description: >-
