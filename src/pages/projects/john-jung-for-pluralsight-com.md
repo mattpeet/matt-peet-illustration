@@ -16,5 +16,12 @@ images:
       2020**
     image: /img/pluralsight-johnjung-1200x636px.jpg
     imageTitle: John Jung
+  - altText: Screenshot of Pluralsight.com
+    description: >-
+      **For**
+      [**Pluralsight.com**](https://www.pluralsight.com/blog/teams/john-jung-the-weirdness-of-leadership)**,
+      2020**
+    image: /img/pluralsight-johnjung-screenshot.png
+    imageTitle: John Jung screenshot
 ---
 
