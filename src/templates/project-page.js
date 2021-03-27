@@ -126,7 +126,7 @@ export const pageQuery = graphql`
       nodes {
         frontmatter {
           title
-          seo_keywords
+          seoKeywords
           images {
             altText
             description
