@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
-import { graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import ReactMarkdown from "react-markdown";
-import projectStyle from "./project.module.css";
-import Layout from "../components/Layout/Layout";
-import globalStyles from "../components/global.module.css";
+import React, { useState, useEffect, useRef } from 'react';
+import { graphql } from 'gatsby';
+import ReactMarkdown from 'react-markdown';
+import projectStyle from './project.module.css';
+import Layout from '../components/Layout/Layout';
+import globalStyles from '../components/global.module.css';
 
-export const ProjectPageTemplate = ({ title = "", images = [] }) => {
+export const ProjectPageTemplate = ({ title = '', images = [] }) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [activeImage, setActiveImage] = useState(images[0]);
   const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
@@ -28,7 +27,7 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
   }, [isDescriptionOpen, infoButtonRef, closeInfoButtonRef]);
 
   const { altText, description, imageTitle } = activeImage;
-  const image = getImage(activeImage.image);
+  const { publicURL } = activeImage.image;
 
   return (
     <main>
@@ -42,11 +41,11 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
           }}
         >
           <span className={globalStyles.visuallyHidden}>Previous image</span>
-          <i className="fas fa-chevron-left" aria-hidden="true" />
+          <i className='fas fa-chevron-left' aria-hidden='true' />
         </button>
-        <GatsbyImage
+        <img
           alt={altText}
-          image={image}
+          src={publicURL}
           className={projectStyle.activeImage}
         />
         <button
@@ -57,14 +56,14 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
           }}
         >
           <span className={globalStyles.visuallyHidden}>Next image</span>
-          <i className="fas fa-chevron-right" aria-hidden="true" />
+          <i className='fas fa-chevron-right' aria-hidden='true' />
         </button>
       </div>
       {isDescriptionOpen && (
         <div
           className={`${projectStyle.description} ${projectStyle.popoverDescription}`}
-          id="description-popover"
-          aria-describedby="open-description"
+          id='description-popover'
+          aria-describedby='open-description'
         >
           <div>
             <h2 className={projectStyle.descriptionTitle}>{imageTitle}</h2>
@@ -78,7 +77,7 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
             <span className={globalStyles.visuallyHidden}>
               Close description
             </span>
-            <i className="fas fa-times" aria-hidden="true" />
+            <i className='fas fa-times' aria-hidden='true' />
           </button>
         </div>
       )}
@@ -88,10 +87,10 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
           onClick={() => setIsDescriptionOpen(true)}
           className={`${projectStyle.infoButton} ${projectStyle.iconButton}`}
         >
-          <span className={globalStyles.visuallyHidden} id="open-description">
+          <span className={globalStyles.visuallyHidden} id='open-description'>
             Image information
           </span>
-          <i className="fas fa-info-circle" aria-hidden="true" />
+          <i className='fas fa-info-circle' aria-hidden='true' />
         </button>
       )}
       <div
@@ -133,9 +132,7 @@ export const pageQuery = graphql`
             description
             imageTitle
             image {
-              childImageSharp {
-                gatsbyImageData(placeholder: DOMINANT_COLOR)
-              }
+              publicURL
             }
           }
           socialImage {
