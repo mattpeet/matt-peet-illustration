@@ -5,6 +5,7 @@
   list-style: none;
   padding-left: 0;
   margin-top: 0;
+  grid-gap: 10px;
 }
 
 @media (orientation: landscape), (min-width: 768px) {
@@ -29,7 +30,7 @@
 .thumbListItem {
   position: relative;
   height: 250px;
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
