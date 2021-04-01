@@ -1,8 +1,8 @@
-import React from 'react';
-import { graphql, Link } from 'gatsby';
-import Layout from '../components/Layout/Layout';
-import globalStyles from '../components/global.module.css';
-import contactStyles from './contact.module.css';
+import React from "react";
+import { graphql } from "gatsby";
+import Layout from "../components/Layout/Layout";
+import globalStyles from "../components/global.module.css";
+import contactStyles from "./contact.module.css";
 
 export const ContactPageTemplate = ({ contactLinks = [] }) => {
   const contactListItems = contactLinks.map((link, index) => {
@@ -11,12 +11,12 @@ export const ContactPageTemplate = ({ contactLinks = [] }) => {
 
     return (
       <li key={key} className={contactStyles.contactListItem}>
-        <Link to={url} aria-hidden='true' className={contactStyles.iconLink}>
-          <i aria-hidden='true' className={`${faIcon} ${contactStyles.icon}`} />
-        </Link>
-        <Link to={url} aria-label={description}>
+        <a href={url} aria-hidden="true" className={contactStyles.iconLink}>
+          <i aria-hidden="true" className={`${faIcon} ${contactStyles.icon}`} />
+        </a>
+        <a href={url} aria-label={description}>
           {visibleText}
-        </Link>
+        </a>
       </li>
     );
   });
