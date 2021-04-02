@@ -30,13 +30,18 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
   const { altText, description, imageTitle } = activeImage;
   const image = getImage(activeImage.image);
 
+  const isFirstImage = activeSlideIndex === 0;
+  const isLastImage = activeSlideIndex === images.length - 1;
+
   return (
     <main>
       <h1 className={globalStyles.visuallyHidden}>{title}</h1>
       <div className={projectStyle.imageContainer}>
         <button
           disabled={activeSlideIndex === 0}
-          className={projectStyle.carouselButton}
+          className={`${projectStyle.carouselButton} ${
+            isFirstImage ? projectStyle.hidden : ""
+          }`}
           onClick={() => {
             setActiveSlideIndex(activeSlideIndex - 1);
           }}
@@ -46,12 +51,16 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
         </button>
         <GatsbyImage
           alt={altText}
+          loading="eager"
           image={image}
-          className={projectStyle.activeImage}
+          imgClassName={projectStyle.activeImage}
+          objectFit="contain"
         />
         <button
           disabled={activeSlideIndex === images.length - 1}
-          className={projectStyle.carouselButton}
+          className={`${projectStyle.carouselButton} ${
+            isLastImage ? projectStyle.hidden : ""
+          }`}
           onClick={() => {
             setActiveSlideIndex(activeSlideIndex + 1);
           }}
@@ -134,7 +143,10 @@ export const pageQuery = graphql`
             imageTitle
             image {
               childImageSharp {
-                gatsbyImageData(placeholder: DOMINANT_COLOR)
+                gatsbyImageData(
+                  placeholder: DOMINANT_COLOR
+                  layout: CONSTRAINED
+                )
               }
             }
           }
