@@ -5,6 +5,7 @@ module.exports = {
       "Matt Peet Illustration. Freelance illustrator in Edinburgh, UK",
   },
   plugins: [
+    "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
