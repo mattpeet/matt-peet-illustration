@@ -10,12 +10,13 @@ const getProjectListItems = (projectData) =>
   projectData.map((x, index) => {
     const key = `project-thumb-${index}`;
     const image = getImage(x.frontmatter.thumbnail);
+    const { thumbnailTitle } = x.frontmatter;
     return (
       <li key={key} className={indexStyle.thumbListItem}>
         <Link to={x.fields.slug}>
           <GatsbyImage className={indexStyle.thumbnail} image={image} alt="" />
           <div className={indexStyle.thumbnailOverlay}>
-            <p>{x.frontmatter.thumbnailTitle}</p>
+            {thumbnailTitle && <p>{thumbnailTitle}</p>}
           </div>
         </Link>
       </li>
