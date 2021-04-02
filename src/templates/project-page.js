@@ -38,7 +38,7 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
       <h1 className={globalStyles.visuallyHidden}>{title}</h1>
       <div className={projectStyle.imageContainer}>
         <button
-          disabled={activeSlideIndex === 0}
+          disabled={isFirstImage}
           className={`${projectStyle.carouselButton} ${
             isFirstImage ? projectStyle.hidden : ""
           }`}
@@ -57,7 +57,7 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
           objectFit="contain"
         />
         <button
-          disabled={activeSlideIndex === images.length - 1}
+          disabled={isLastImage}
           className={`${projectStyle.carouselButton} ${
             isLastImage ? projectStyle.hidden : ""
           }`}
