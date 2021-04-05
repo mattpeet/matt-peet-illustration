@@ -68,10 +68,12 @@ export const pageQuery = graphql`
     }
     projects: allMarkdownRemark(
       filter: { frontmatter: { templateKey: { eq: "project-page" } } }
+      sort: { order: ASC, fields: [frontmatter___order] }
     ) {
       nodes {
         frontmatter {
           title
+          order
           thumbnail {
             childImageSharp {
               gatsbyImageData(placeholder: DOMINANT_COLOR)

@@ -1,5 +1,6 @@
 ---
 title: Ian Rankin
+order: 0
 templateKey: project-page
 seoKeywords: portrait, illustration, portrait illustration, matt peet illustration
 thumbnail: /img/23.03.21.jpg
