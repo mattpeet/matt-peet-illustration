@@ -10,7 +10,7 @@ images:
     description: |-
       lead singer, The National
 
-      2021
+      2020
     altText: portrait illustration, Matt Berninger, The National
     image: /img/mberninger_09.03.20.jpg
 ---
