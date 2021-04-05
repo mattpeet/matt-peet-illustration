@@ -1,6 +1,6 @@
 ---
 title: Irvine Welsh
-order: 0
+order: 1
 templateKey: project-page
 seoKeywords: portrait, illustration, portrait illustration, matt peet illustration
 thumbnail: /img/22.03.21.jpg
