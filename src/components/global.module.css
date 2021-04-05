@@ -30,7 +30,7 @@ a:hover {
   padding: 25px;
 }
 
-@media (min-width: 820px) and (orientation: landscape) {
+@media (min-width: 768px) and (orientation: landscape) {
   .containerGrid {
     grid-template-columns: 30% 70%;
   }
