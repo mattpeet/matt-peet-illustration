@@ -1,6 +1,6 @@
 ---
 title: Young Fathers
-order: 1
+order: 8
 templateKey: project-page
 seoKeywords: portrait, illustration, portrait illustration, matt peet illustration
 thumbnail: /img/yf-24.03.21iii.jpg
