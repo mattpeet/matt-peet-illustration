@@ -69,6 +69,32 @@ export const ProjectPageTemplate = ({ title = "", images = [] }) => {
           <i className="fas fa-chevron-right" aria-hidden="true" />
         </button>
       </div>
+      <div className={projectStyle.mobileCarouselButtons}>
+        <button
+          disabled={isFirstImage}
+          className={`${projectStyle.carouselButton} ${
+            isFirstImage ? projectStyle.hidden : ""
+          }`}
+          onClick={() => {
+            setActiveSlideIndex(activeSlideIndex - 1);
+          }}
+        >
+          <span className={globalStyles.visuallyHidden}>Previous image</span>
+          <i className="fas fa-chevron-left" aria-hidden="true" />
+        </button>
+        <button
+          disabled={isLastImage}
+          className={`${projectStyle.carouselButton} ${
+            isLastImage ? projectStyle.hidden : ""
+          }`}
+          onClick={() => {
+            setActiveSlideIndex(activeSlideIndex + 1);
+          }}
+        >
+          <span className={globalStyles.visuallyHidden}>Next image</span>
+          <i className="fas fa-chevron-right" aria-hidden="true" />
+        </button>
+      </div>
       {isDescriptionOpen && (
         <div
           className={`${projectStyle.description} ${projectStyle.popoverDescription}`}

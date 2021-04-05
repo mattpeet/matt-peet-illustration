@@ -17,6 +17,26 @@
   background-color: transparent;
 }
 
+.imageContainer .carouselButton {
+  display: none;
+}
+
+.mobileCarouselButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .mobileCarouselButtons {
+    display: none;
+  }
+
+  .imageContainer .carouselButton {
+    display: block;
+  }
+}
+
 .carouselButton.hidden {
   visibility: hidden;
 }
