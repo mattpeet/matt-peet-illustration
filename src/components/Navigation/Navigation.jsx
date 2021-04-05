@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { Link } from 'gatsby';
-import navigationStyle from './navigation.module.css';
-import globalStyle from '../global.module.css';
+import React, { useRef, useState, useEffect } from "react";
+import { Link } from "gatsby";
+import navigationStyle from "./navigation.module.css";
+import globalStyle from "../global.module.css";
 
 export default function Navigation({ socialLinks }) {
   const dropdownButtonRef = useRef(null);
@@ -9,7 +9,7 @@ export default function Navigation({ socialLinks }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const wrapKeyHandler = (event) => {
-    if (event.key === 'Escape' && isDropdownOpen) {
+    if (event.key === "Escape" && isDropdownOpen) {
       setIsDropdownOpen(false);
       dropdownButtonRef.current.focus();
     }
@@ -32,14 +32,14 @@ export default function Navigation({ socialLinks }) {
 
   useEffect(() => {
     if (isDropdownOpen) {
-      document.addEventListener('mouseup', clickOutsideDropdownHandler);
-      dropdownListRef.current.querySelector('a').focus();
+      document.addEventListener("mouseup", clickOutsideDropdownHandler);
+      dropdownListRef.current.querySelector("a").focus();
     } else {
-      document.removeEventListener('mouseup', clickOutsideDropdownHandler);
+      document.removeEventListener("mouseup", clickOutsideDropdownHandler);
     }
 
     return () => {
-      document.removeEventListener('mouseup', clickOutsideDropdownHandler);
+      document.removeEventListener("mouseup", clickOutsideDropdownHandler);
     };
   }, [isDropdownOpen]);
 
@@ -58,8 +58,8 @@ export default function Navigation({ socialLinks }) {
   return (
     <>
       <div className={navigationStyle.topLevelNavRow}>
-        <nav aria-labelledby='social-nav-label'>
-          <span id='social-nav-label' className={globalStyle.visuallyHidden}>
+        <nav aria-labelledby="social-nav-label">
+          <span id="social-nav-label" className={globalStyle.visuallyHidden}>
             Social
           </span>
           <ul
@@ -72,21 +72,21 @@ export default function Navigation({ socialLinks }) {
           <button
             ref={dropdownButtonRef}
             className={navigationStyle.dropdownButton}
-            aria-haspopup='true'
-            aria-controls='navigation-dropdown'
+            aria-haspopup="true"
+            aria-controls="navigation-dropdown"
             onClick={dropdownButtonClickHandler}
           >
             <span className={globalStyle.visuallyHidden}>
               Open main navigation
             </span>
-            <i className='fas fa-bars' aria-hidden='true' />
+            <i className="fas fa-bars" aria-hidden="true" />
           </button>
-          <nav aria-labelledby='main-nav-label'>
-            <span id='main-nav-label' className={globalStyle.visuallyHidden}>
+          <nav aria-labelledby="main-nav-label">
+            <span id="main-nav-label" className={globalStyle.visuallyHidden}>
               Main
             </span>
             <ul
-              id='navigation-dropdown'
+              id="navigation-dropdown"
               ref={dropdownListRef}
               className={`${navigationStyle.dropdownList} ${
                 isDropdownOpen
@@ -95,34 +95,46 @@ export default function Navigation({ socialLinks }) {
               }`}
             >
               <li>
-                <Link to='/'>projects</Link>
+                <Link to="/" className={navigationStyle.navigationLink}>
+                  projects
+                </Link>
               </li>
               <li>
-                <Link to='/about'>about</Link>
+                <Link to="/about" className={navigationStyle.navigationLink}>
+                  about
+                </Link>
               </li>
               <li>
-                <Link to='/contact'>contact</Link>
+                <Link to="/contact" className={navigationStyle.navigationLink}>
+                  contact
+                </Link>
               </li>
             </ul>
           </nav>
         </div>
       </div>
       <nav
-        aria-labelledby='main-nav-label'
+        aria-labelledby="main-nav-label"
         className={navigationStyle.sideNavigation}
       >
-        <span id='main-nav-label' className={globalStyle.visuallyHidden}>
+        <span id="main-nav-label" className={globalStyle.visuallyHidden}>
           Main
         </span>
         <ul className={navigationStyle.navList}>
           <li className={navigationStyle.largeNavLink}>
-            <Link to='/'>projects</Link>
+            <Link to="/" className={navigationStyle.navigationLink}>
+              projects
+            </Link>
           </li>
           <li>
-            <Link to='/about'>about</Link>
+            <Link to="/about" className={navigationStyle.navigationLink}>
+              about
+            </Link>
           </li>
           <li>
-            <Link to='/contact'>contact</Link>
+            <Link to="/contact" className={navigationStyle.navigationLink}>
+              contact
+            </Link>
           </li>
         </ul>
       </nav>

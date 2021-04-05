@@ -72,6 +72,10 @@
   display: none;
 }
 
+.navigationLink {
+  text-decoration: none;
+}
+
 @media (orientation: landscape) and (min-width: 768px) {
   .dropdownWrap {
     display: none;
