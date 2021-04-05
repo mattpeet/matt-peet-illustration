@@ -1,20 +1,20 @@
 ---
 title: Frances Ha
-order: 5
+order: 3
 templateKey: project-page
-seoKeywords: "portrait, illustration, portrait illustration, matt peet illustration"
+seoKeywords: portrait, illustration, portrait illustration, matt peet illustration
 thumbnail: /img/fh-thumbnail.jpg
-thumbnailTitle: Poster design
+thumbnailTitle: ""
 socialImage: /img/fh-thumbnail.jpg
 images:
-  - altText: "Portrait illustration, Greta Gerwig as Frances Ha"
+  - altText: Portrait illustration, Greta Gerwig as Frances Ha
     description: |-
       Greta Gerwig as Frances Ha
 
       2021
     image: /img/fh-poster.jpg
     imageTitle: Portrait illustration
-  - altText: "Poster design, Greta Gerwig as Frances Ha"
+  - altText: Poster design, Greta Gerwig as Frances Ha
     description: |-
       Greta Gerwig as Frances Ha
 
