@@ -1,5 +1,5 @@
 ---
-title: 1. Irvine Welsh
+title: Irvine Welsh
 order: 0
 templateKey: project-page
 seoKeywords: portrait, illustration, portrait illustration, matt peet illustration
