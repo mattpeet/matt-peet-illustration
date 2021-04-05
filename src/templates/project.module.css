@@ -8,6 +8,10 @@
   max-width: 90%;
 }
 
+[data-gatsby-image-wrapper] {
+  max-height: 80vh !important;
+}
+
 .carouselButton {
   border: none;
   background-color: transparent;
