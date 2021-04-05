@@ -1,12 +1,13 @@
 ---
 title: Kim Burgaard for Pluralsight.com
+order: 0
 templateKey: project-page
-seoKeywords: 'portrait, illustration, portrait illustration, matt peet illustration'
+seoKeywords: "portrait, illustration, portrait illustration, matt peet illustration"
 thumbnail: /img/pluralsight-kimburgaard-1200x636px.jpg
 thumbnailTitle: Portrait illustration for Pluralsight.com
 socialImage: /img/pluralsight-kimburgaard-1200x636px.jpg
 images:
-  - altText: 'Portrait illustration, Kim Burgaard for Pluralsight.com'
+  - altText: "Portrait illustration, Kim Burgaard for Pluralsight.com"
     description: >-
       Director of Engineering at Fernish
 
@@ -16,7 +17,7 @@ images:
       2021**
     image: /img/pluralsight-kimburgaard-1200x636px.jpg
     imageTitle: Kim Burgaard
-  - altText: 'Screenshot, Pluralsight.com'
+  - altText: "Screenshot, Pluralsight.com"
     description: >-
       **For**
       [**Pluralsight.com**](https://www.pluralsight.com/blog/teams/process-of-change-kim-burgaard)**,
@@ -24,4 +25,3 @@ images:
     image: /img/pluralsight-kimburgaard-screenshot.png
     imageTitle: Kim Burgaard
 ---
-

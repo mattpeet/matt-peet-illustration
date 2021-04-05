@@ -99,6 +99,7 @@ collections:
     create: true
     fields:
       - { title: 'Title', name: 'title', widget: 'string' }
+      - { title: 'Display order', name: 'order', widget: 'number', value_type: 'int', default: 0 }
       - {
           label: 'Template Key',
           name: 'templateKey',
