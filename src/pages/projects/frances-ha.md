@@ -9,16 +9,16 @@ socialImage: /img/fh-thumbnail.jpg
 images:
   - altText: Portrait illustration, Greta Gerwig as Frances Ha
     description: |-
-      Greta Gerwig as Frances Ha
+      Portrait illustration, 
 
       2021
     image: /img/fh-poster.jpg
-    imageTitle: Portrait illustration
+    imageTitle: Greta Gerwig / Frances Ha
   - altText: Poster design, Greta Gerwig as Frances Ha
     description: |-
-      Greta Gerwig as Frances Ha
+      Film poster design
 
       2021
     image: /img/fh-poster2.jpg
-    imageTitle: Poster design
+    imageTitle: Frances Ha
 ---
