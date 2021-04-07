@@ -1,10 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: "Matt Peet Illustration",
+    siteUrl: "https://www.mattpeetillustration.com",
     description:
       "Matt Peet Illustration. Freelance illustrator in Edinburgh, UK",
   },
   plugins: [
+    "gatsby-plugin-sitemap",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
