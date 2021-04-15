@@ -12,5 +12,19 @@ images:
 
       2021
     altText: Portrait illustration, Anya Taylor-Joy, The Queen's Gambit
-    image: /img/qg-30.03.21.jpg
+    image: /img/qg-30.03.21b.jpg
+  - imageTitle: Anya Taylor-Joy
+    description: |-
+      The Queen's Gambit, Netflix
+
+      2021
+    altText: Portrait illustration, Anya Taylor-Joy, The Queen's Gambit
+    image: /img/qg-01.04.21.jpg
+  - altText: Portrait illustration, Anya Taylor-Joy, The Queen's Gambit
+    description: |-
+      The Queen's Gambit, Netflix
+
+      2021
+    imageTitle: Anya Taylor-Joy
+    image: /img/qg-12.04.21.jpg
 ---
